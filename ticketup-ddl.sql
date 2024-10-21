@@ -18,8 +18,10 @@ CREATE TABLE evento (
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
-    apellido VARCHAR(255) NOT NULL
+    apellido VARCHAR(255) NOT NULL,
+    email varchar(255) NOT NULL UNIQUE KEY
 );
+
 /*----------------------------------------------------------------------------*/
 CREATE TABLE tipo_producto (
     id_tipo_producto INT PRIMARY KEY AUTO_INCREMENT,
