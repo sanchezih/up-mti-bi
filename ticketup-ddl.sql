@@ -19,9 +19,8 @@ CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
-    email varchar(255) NOT NULL UNIQUE KEY
+    email VARCHAR(255) NOT NULL UNIQUE KEY
 );
-
 /*----------------------------------------------------------------------------*/
 CREATE TABLE tipo_producto (
     id_tipo_producto INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,7 +40,8 @@ CREATE TABLE producto_base (
 CREATE TABLE localidad_evento (
     id_localidad INT NOT NULL,
     id_evento INT NOT NULL,
-    estado ENUM('Disponible', 'Reservada', 'Vendida', 'Anualda') DEFAULT 'Disponible' NOT NULL,
+    estado ENUM('Disponible', 'Reservada', 'Vendida', 'Escaneada OK', 'No Disponible') DEFAULT 'Disponible' NOT NULL,
+    localia BOOLEAN,
     PRIMARY KEY (id_localidad , id_evento),
     FOREIGN KEY (id_evento)
         REFERENCES evento (id_evento),
@@ -91,4 +91,12 @@ CREATE TABLE producto_merchandising (
     stock INT NOT NULL,
     FOREIGN KEY (id_producto_base)
         REFERENCES producto_base (id_producto)
+);
+/*----------------------------------------------------------------------------*/
+CREATE TABLE encuentro_deportivo (
+    id_evento INT PRIMARY KEY,
+    equipo_local VARCHAR(100) NOT NULL,
+    equipo_visitante VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_evento)
+        REFERENCES evento (id_evento)
 );
