@@ -100,3 +100,23 @@ CREATE TABLE encuentro_deportivo (
     FOREIGN KEY (id_evento)
         REFERENCES evento (id_evento)
 );
+/*----------------------------------------------------------------------------*/
+CREATE TABLE `ticketup`.`equipo` (
+  `id_equipo` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `pais` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_equipo`),
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE);
+
+/*----------------------------------------------------------------------------*/
+  CREATE TABLE `ticketup`.`objetivos_equipo` (
+  `equipo` INT NOT NULL,
+  `mes_anio` VARCHAR(45) NOT NULL,
+  `monto` DOUBLE NOT NULL,
+  PRIMARY KEY (`equipo`, `mes_anio`),
+  CONSTRAINT `equipo`
+    FOREIGN KEY (`equipo`)
+    REFERENCES `ticketup`.`equipo` (`id_equipo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
