@@ -10,10 +10,10 @@ CREATE TABLE `fact_table` (
   `precio` decimal(10,2) DEFAULT NULL,
   `equipo_ticket` varchar(45) DEFAULT NULL,
   `fecha_id` varchar(6) DEFAULT NULL,
+  `equipo_visitante` varchar(45) DEFAULT NULL,
   KEY `fecha_id_idx` (`fecha_id`),
   CONSTRAINT `fecha_id` FOREIGN KEY (`fecha_id`) REFERENCES `fecha_dimension` (`fecha_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
 
 CREATE TABLE `fecha_dimension` (
   `mes_anio` date NOT NULL,
