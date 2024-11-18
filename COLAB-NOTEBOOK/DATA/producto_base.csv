@@ -1,0 +1,5 @@
+id_producto,nombre,descripcion,precio,id_tipo_producto
+1,"Entrada VIP","Acceso preferencial y zona exclusiva",150.00,1
+2,"Entrada General","Acceso estándar",50.00,1
+3,"Camiseta Oficial","Camiseta del evento",25.00,2
+4,"Bebida Refrescante","Botella de agua",2.50,3
