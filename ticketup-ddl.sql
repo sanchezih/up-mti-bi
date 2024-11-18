@@ -93,13 +93,17 @@ CREATE TABLE producto_merchandising (
         REFERENCES producto_base (id_producto)
 );
 /*----------------------------------------------------------------------------*/
-CREATE TABLE encuentro_deportivo (
-    id_evento INT PRIMARY KEY,
-    equipo_local VARCHAR(100) NOT NULL,
-    equipo_visitante VARCHAR(100) NOT NULL,
-    FOREIGN KEY (id_evento)
-        REFERENCES evento (id_evento)
-);
+CREATE TABLE `encuentro_deportivo` (
+  `id_evento` int NOT NULL,
+  `equipo_local` int NOT NULL,
+  `equipo_visitante` int NOT NULL,
+  PRIMARY KEY (`id_evento`),
+  KEY `equipo_local_idx` (`equipo_local`),
+  KEY `equipo_visitante_idx` (`equipo_visitante`),
+  CONSTRAINT `encuentro_deportivo_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`),
+  CONSTRAINT `equipo_local` FOREIGN KEY (`equipo_local`) REFERENCES `equipo` (`id_equipo`),
+  CONSTRAINT `equipo_visitante` FOREIGN KEY (`equipo_visitante`) REFERENCES `equipo` (`id_equipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 /*----------------------------------------------------------------------------*/
 CREATE TABLE `ticketup`.`equipo` (
   `id_equipo` INT NOT NULL AUTO_INCREMENT,
