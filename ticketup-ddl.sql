@@ -2,12 +2,14 @@ DROP DATABASE IF EXISTS ticketup;
 CREATE DATABASE ticketup;
 USE ticketup;
 /*----------------------------------------------------------------------------*/
-CREATE TABLE localidad (
-    id_localidad INT PRIMARY KEY AUTO_INCREMENT,
-    sector_localidad CHAR(1) NOT NULL,
-    fila_localidad INT NOT NULL,
-    numero_localidad INT NOT NULL
-);
+CREATE TABLE `localidad` (
+  `id_localidad` int NOT NULL AUTO_INCREMENT,
+  `sector_localidad` char(1) NOT NULL,
+  `fila_localidad` int NOT NULL,
+  `numero_localidad` int NOT NULL,
+  `nombre_localidad` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_localidad`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 /*----------------------------------------------------------------------------*/
 CREATE TABLE evento (
     id_evento INT PRIMARY KEY AUTO_INCREMENT,
