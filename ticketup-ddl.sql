@@ -51,20 +51,24 @@ CREATE TABLE localidad_evento (
         REFERENCES localidad (id_localidad)
 );
 /*----------------------------------------------------------------------------*/
-CREATE TABLE ticket_evento (
-    id_ticket_evento INT PRIMARY KEY AUTO_INCREMENT,
-    id_producto INT,
-    id_localidad INT NOT NULL,
-    id_evento INT NOT NULL,
-    nombre_persona_ocupante VARCHAR(100) NOT NULL,
-    dni_persona_ocupante VARCHAR(100) NOT NULL,
-    FOREIGN KEY (id_localidad)
-        REFERENCES localidad (id_localidad),
-    FOREIGN KEY (id_evento)
-        REFERENCES evento (id_evento),
-    FOREIGN KEY (id_producto)
-        REFERENCES producto_base (id_producto)
-);
+CREATE TABLE `ticket_evento` (
+  `id_ticket_evento` int NOT NULL AUTO_INCREMENT,
+  `id_producto` int DEFAULT NULL,
+  `id_localidad` int NOT NULL,
+  `id_evento` int NOT NULL,
+  `nombre_persona_ocupante` varchar(100) NOT NULL,
+  `dni_persona_ocupante` varchar(100) NOT NULL,
+  `id_item_factura` int DEFAULT NULL,
+  PRIMARY KEY (`id_ticket_evento`),
+  KEY `id_localidad` (`id_localidad`),
+  KEY `id_evento` (`id_evento`),
+  KEY `id_producto` (`id_producto`),
+  KEY `item_factura_idx` (`id_item_factura`),
+  CONSTRAINT `item_factura` FOREIGN KEY (`id_item_factura`) REFERENCES `item_factura` (`id_item`),
+  CONSTRAINT `ticket_evento_ibfk_1` FOREIGN KEY (`id_localidad`) REFERENCES `localidad` (`id_localidad`),
+  CONSTRAINT `ticket_evento_ibfk_2` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`),
+  CONSTRAINT `ticket_evento_ibfk_3` FOREIGN KEY (`id_producto`) REFERENCES `producto_base` (`id_producto`)
+) ENGINE=InnoDB AUTO_INCREMENT=2001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 /*----------------------------------------------------------------------------*/
 CREATE TABLE factura (
     id_factura INT PRIMARY KEY AUTO_INCREMENT,
